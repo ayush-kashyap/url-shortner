@@ -49,8 +49,9 @@ function UrlShort() {
         <div className="flex-col h-screen w-screen bg-gray-100 flex justify-center items-center">
             {isLoading?<Loader/>:null}
             <form onSubmit={createShortUrl} className='sm:w-3/6 w-5/6 bg-white p-10 rounded-xl flex flex-col'>
-                {id ? <input ref={inpRef} disabled type='text' className='py-2 px-4 focus:outline-none border-0 border-b-2 border-blue-600' value={id} /> : <input onChange={onChangeHandler} type="text" required placeholder='Enter Url' className='py-2 px-4 focus:outline-none border-0 border-b-2 border-blue-600' name='url' />}
-                {id?<button className='focus:outline-none px-4 py-2 my-2 bg-blue-600 text-white rounded-md' onClick={()=>{navigator.clipboard.writeText(inpRef.current.value); setCopy("Copied!!")}} >{copy}</button>:<input type="submit" value="Generate Short Url" className='focus:outline-none px-4 py-2 my-2 bg-blue-600 text-white rounded-md' />}
+                {id ? <input ref={inpRef} disabled type='text' className='py-2 px-4 focus:outline-none border-0 border-b-2 border-blue-600' value={id} onClick={()=>{navigator.clipboard.writeText(inpRef.current.value); setCopy("Copied!!")}}/> : <input onChange={onChangeHandler} type="text" required placeholder='Enter Url' className='py-2 px-4 focus:outline-none border-0 border-b-2 border-blue-600' name='url' />}
+                <input type="submit" value="Generate Short Url" className='focus:outline-none px-4 py-2 my-2 bg-blue-600 text-white rounded-md' />
+                    {id ? "Click on the link to copy":""}                                                                                                                                            
             </form>
             <span className='fixed bottom-0 mb-2 font-semibold'> Made by <a href="https://ayushkashyap.netlify.app" target='_blank' className='underline'>Ayush Kashyap</a></span>
         </div>
